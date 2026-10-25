@@ -12,4 +12,8 @@ pub fn main(init: std.process.Init) !void {
     for (tokens) |token| {
         std.log.info("token = {f}", .{token});
     }
+
+    var parser: oil.Parser = .init(tokens);
+    defer parser.deinit(init.gpa);
+    try parser.parse(init.gpa);
 }

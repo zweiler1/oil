@@ -9,7 +9,7 @@ const Block = @import("Block.zig");
 name: []const u8,
 ret_ty: Token.Type,
 params: handle.Slice(Param),
-blocks: handle.Slice(Block),
+blocks: ?handle.Slice(Block),
 
 pub const Handle = handle.Handle(Self, u32);
 

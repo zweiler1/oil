@@ -8,6 +8,8 @@ pub const Token = union(enum) {
     instruction: Instruction,
     type: Type,
 
+    pub const Tag = std.meta.FieldEnum(Token);
+
     pub const Symbol = enum {
         eol,
         percent,
@@ -24,6 +26,7 @@ pub const Token = union(enum) {
     };
 
     pub const Keyword = enum {
+        @"align",
         define,
         declare,
         global,

@@ -41,7 +41,7 @@ pub fn Collection(comptime T: type) type {
 
         /// Only call this function if you are no longer adding any elements to the collection
         /// as otherwise the returned pointer would be invalid.
-        pub fn get(self: *Self, handle: Handle(T, u32)) *T {
+        pub fn get(self: *const Self, handle: Handle(T, u32)) *T {
             if (handle.toInt() >= self.coll.items.len) {
                 @panic("Invalid handle");
             }
@@ -50,7 +50,7 @@ pub fn Collection(comptime T: type) type {
 
         /// Only call this function if you are no longer adding any elements to the collection
         /// as otherwise the returned slice would be invalid.
-        pub fn slice(self: *Self, s: Slice(T)) []T {
+        pub fn slice(self: *const Self, s: Slice(T)) []T {
             if (s.start.toInt() + s.len > self.coll.items.len) {
                 @panic("Invalid slice handle");
             }
@@ -59,7 +59,7 @@ pub fn Collection(comptime T: type) type {
 
         pub fn append(self: *Self, allocator: std.mem.Allocator, value: T) !Handle(T, u32) {
             try self.coll.append(allocator, value);
-            return Handle(T, u32).fromInt(self.coll.items.len - 1);
+            return Handle(T, u32).fromInt(@intCast(self.coll.items.len - 1));
         }
     };
 }

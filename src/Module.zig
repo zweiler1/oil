@@ -17,3 +17,15 @@ blocks: handle.Collection(Block) = .empty,
 
 instructions: handle.Collection(Instruction) = .empty,
 operands: handle.Collection(Instruction.Operand) = .empty,
+
+pub fn deinit(self: *Self, allocator: std.mem.Allocator) void {
+    self.globals.coll.deinit(allocator);
+
+    self.functions.coll.deinit(allocator);
+    self.params.coll.deinit(allocator);
+
+    self.blocks.coll.deinit(allocator);
+
+    self.instructions.coll.deinit(allocator);
+    self.operands.coll.deinit(allocator);
+}
