@@ -37,7 +37,7 @@ pub fn Collection(comptime T: type) type {
 
         const Self = @This();
 
-        pub const empty = .{ .coll = .empty };
+        pub const empty: Self = .{ .coll = .empty };
 
         /// Only call this function if you are no longer adding any elements to the collection
         /// as otherwise the returned pointer would be invalid.
