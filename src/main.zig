@@ -2,6 +2,9 @@ const std = @import("std");
 const oil = @import("oil");
 
 pub fn main(init: std.process.Init) !void {
+    var stdout_writer = std.Io.File.stdout().writer(init.io, &.{});
+    const stdout = &stdout_writer.interface;
+
     const file_content = try std.Io.Dir.cwd().readFileAlloc(init.io, "test.ll", init.gpa, .unlimited);
     defer init.gpa.free(file_content);
 
@@ -16,4 +19,6 @@ pub fn main(init: std.process.Init) !void {
     var parser: oil.Parser = .init(tokens);
     defer parser.deinit(init.gpa);
     try parser.parse(init.gpa);
+
+    try parser.module.dump(stdout);
 }

@@ -29,3 +29,12 @@ pub fn deinit(self: *Self, allocator: std.mem.Allocator) void {
     self.instructions.coll.deinit(allocator);
     self.operands.coll.deinit(allocator);
 }
+
+pub fn dump(self: *const Self, writer: *std.Io.Writer) !void {
+    for (self.globals.coll.items) |*global| {
+        try global.dump(writer);
+    }
+    for (self.functions.coll.items) |*function| {
+        try function.dump(self, writer);
+    }
+}
