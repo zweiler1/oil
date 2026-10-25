@@ -6,7 +6,7 @@ pub fn main(init: std.process.Init) !void {
     defer init.gpa.free(file_content);
 
     var lexer: oil.Lexer = .init(file_content);
-    const tokens: []const oil.Lexer.Token = try lexer.run(init.gpa);
+    const tokens: []const oil.Token = try lexer.run(init.gpa);
     defer init.gpa.free(tokens);
 
     for (tokens) |token| {
