@@ -194,8 +194,8 @@ pub fn run(self: *Self, allocator: std.mem.Allocator) ![]Token {
 
                 if (std.meta.stringToEnum(Token.Keyword, identifier)) |kw| {
                     break :blk .{ .keyword = kw };
-                } else if (std.meta.stringToEnum(Token.Symbol, identifier)) |sym| {
-                    break :blk .{ .symbol = sym };
+                } else if (std.meta.stringToEnum(Token.Inst, identifier)) |inst| {
+                    break :blk .{ .inst = inst };
                 } else if (std.meta.stringToEnum(Token.Type, identifier)) |@"type"| {
                     break :blk .{ .type = @"type" };
                 } else {
