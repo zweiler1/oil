@@ -1,11 +1,12 @@
 const std = @import("std");
 
+const root = @import("../root.zig");
 const handle = @import("handle.zig");
 
 const Self = @This();
-const Token = @import("token.zig").Token;
-const Module = @import("Module.zig");
-const Block = @import("Block.zig");
+const Token = root.Token;
+const Module = root.Module;
+const Block = root.Block;
 
 name: []const u8,
 ret_ty: Token.Type,

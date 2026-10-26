@@ -1,13 +1,14 @@
 const std = @import("std");
 
+const root = @import("../root.zig");
 const handle = @import("handle.zig");
 
 const Self = @This();
-const Token = @import("token.zig").Token;
-const Module = @import("Module.zig");
-const Global = @import("Global.zig");
-const Function = @import("Function.zig");
-const Block = @import("Block.zig");
+const Token = root.Token;
+const Module = root.Module;
+const Global = root.Global;
+const Function = root.Function;
+const Block = root.Block;
 
 result: ?[]const u8,
 operation: Token.Instruction,

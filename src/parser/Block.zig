@@ -1,10 +1,11 @@
 const std = @import("std");
 
+const root = @import("../root.zig");
 const handle = @import("handle.zig");
 
 const Self = @This();
-const Module = @import("Module.zig");
-const Instruction = @import("Instruction.zig");
+const Module = root.Module;
+const Instruction = root.Instruction;
 
 name: []const u8,
 instructions: handle.Slice(Instruction),

@@ -1,9 +1,10 @@
 const std = @import("std");
 
+const root = @import("../root.zig");
 const handle = @import("handle.zig");
 
 const Self = @This();
-const Token = @import("token.zig").Token;
+const Token = root.Token;
 
 name: []const u8,
 type: Token.Type,

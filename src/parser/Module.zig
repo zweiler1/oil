@@ -1,12 +1,13 @@
 const std = @import("std");
 
+const root = @import("../root.zig");
 const handle = @import("handle.zig");
 
 const Self = @This();
-const Global = @import("Global.zig");
-const Function = @import("Function.zig");
-const Block = @import("Block.zig");
-const Instruction = @import("Instruction.zig");
+const Global = root.Global;
+const Function = root.Function;
+const Block = root.Block;
+const Instruction = root.Instruction;
 
 globals: handle.Collection(Global) = .empty,
 
